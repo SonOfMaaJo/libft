@@ -6,7 +6,7 @@
 /*   By: vnaoussi <vnaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 20:01:11 by vnaoussi          #+#    #+#             */
-/*   Updated: 2025/11/13 20:05:28 by vnaoussi         ###   ########.fr       */
+/*   Updated: 2025/11/14 14:18:15 by vnaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -15,4 +15,3 @@ void	ft_putstr_fd(char *s, int fd)
 {
 	write(fd, s, ft_strlen(s));
 }
-

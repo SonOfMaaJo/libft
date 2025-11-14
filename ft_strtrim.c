@@ -6,7 +6,7 @@
 /*   By: vnaoussi <vnaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 14:14:25 by vnaoussi          #+#    #+#             */
-/*   Updated: 2025/11/13 19:54:23 by vnaoussi         ###   ########.fr       */
+/*   Updated: 2025/11/14 14:43:03 by vnaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -17,6 +17,7 @@ static size_t ft_nbchstr(char const *s1, char const *set)
 	size_t	nb;
 
 	i = 0;
+	nb = 0;
 	while (s1[i++])
 		if (ft_strchr(set, s1[i - 1]) != NULL)
 			nb++;

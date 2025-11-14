@@ -6,25 +6,19 @@
 /*   By: vnaoussi <vnaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 20:09:08 by vnaoussi          #+#    #+#             */
-/*   Updated: 2025/11/14 11:38:43 by vnaoussi         ###   ########.fr       */
+/*   Updated: 2025/11/14 14:40:53 by vnaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 static void ft_putpnb_fd(int n, int fd)
 {
-	char	c;
-
-	c = '0';
-	if (n < 10)
-	{
-		c = c + n;
-		write(fd, &c, 1);
-	}
+	if (n < 10 && n >= 0)
+		ft_putchar_fd(n + '0', fd);
 	else
 	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putnbr_fd(n % 10, fd);
+		ft_putpnb_fd(n / 10, fd);
+		ft_putpnb_fd(n % 10, fd);
 	}
 }
 
@@ -32,6 +26,7 @@ void	ft_putnbr_fd(int n, int fd)
 {
 	int	t_min;
 
+	t_min = 0;
 	if (n < 0)
 	{
 		if (n == INT_MIN)
@@ -44,7 +39,5 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 	ft_putpnb_fd(n, fd);
 	if (t_min)
-		write(fd, "8", 1);
+		ft_putchar_fd('8', fd);
 }
-
-
