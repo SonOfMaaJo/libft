@@ -6,7 +6,7 @@
 /*   By: vnaoussi <vnaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 13:08:18 by vnaoussi          #+#    #+#             */
-/*   Updated: 2025/11/11 13:24:11 by vnaoussi         ###   ########.fr       */
+/*   Updated: 2025/11/14 18:48:12 by vnaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -21,7 +21,7 @@ char	*ft_strrchr(const char *s, int c)
 	while (s[i])
 		if (s[i++] == (char)c)
 			last_pos = i;
-	if (c == 0)
+	if ((char)c == 0)
 		return ((char *)s + i);
 	if (last_pos > 0)
 		return ((char *)s + last_pos - 1);

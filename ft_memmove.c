@@ -6,7 +6,7 @@
 /*   By: vnaoussi <vnaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 01:14:45 by vnaoussi          #+#    #+#             */
-/*   Updated: 2025/11/11 02:07:35 by vnaoussi         ###   ########.fr       */
+/*   Updated: 2025/11/14 19:57:03 by vnaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -17,9 +17,9 @@ static size_t	if_overlap(void *dest, const void *src, size_t n)
 
 	i = 1;
 	while (i < n)
-		if (src + i++ == dest)
+		if ((char *)src + i++ == (char *)dest)
 			return (i - 1);
-	return (0);
+	return (n);
 }
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
@@ -28,22 +28,13 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	size_t	end_f;
 
 	end_f = if_overlap(dest, src, n);
-	if (end_f > 0)
-	{
-		i = end_f;
-		while (i < n)
-		{
-			((char *)dest)[i] = ((char *)src)[i];
-			i++;
-		}
-	}
-	else
-		end_f = n;
+	i = end_f;
+	if (end_f > 0 && end_f < n)
+		while (i++ < n)
+			((char *)dest)[i - 1] = ((char *)src)[i - 1];
 	i = 0;
-	while (i < end_f)
-	{
-		((char *)dest)[i] = ((char *)src)[i];
-		i++;
-	}
+	while (i++ < end_f)
+		((char *)dest)[i - 1] = ((char *)src)[i - 1];
+	
 	return (dest);
 }
