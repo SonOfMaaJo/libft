@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnaoussi <vnaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/11 15:56:36 by vnaoussi          #+#    #+#             */
-/*   Updated: 2025/11/11 16:29:01 by vnaoussi         ###   ########.fr       */
+/*   Created: 2025/11/13 09:23:17 by vnaoussi          #+#    #+#             */
+/*   Updated: 2025/11/13 14:10:28 by vnaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
+	char	*sjoin;
+	size_t	len;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strdup(const char *s)
-{
-	size_t	i;
-	char	*copy;
-
-	i = 0;
-	copy = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (copy != NULL)
+	len = ft_strlen(s1) + ft_strlen(s2);
+	sjoin = (char *)malloc(sizeof(char) * (len + 1));
+	if(sjoin != NULL)
 	{
-		while (s[i++])
-			copy[i - 1] = ((char *)s)[i - 1];
-		copy[i - 1] = '\0';
+		ft_strlcat(sjoin, s1, len + 1);
+		ft_strlcat(sjoin, s2, len + 1);
 	}
-	return (copy);
+	return (sjoin);
 }

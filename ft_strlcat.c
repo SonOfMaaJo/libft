@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnaoussi <vnaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/11 15:56:36 by vnaoussi          #+#    #+#             */
-/*   Updated: 2025/11/11 16:29:01 by vnaoussi         ###   ########.fr       */
+/*   Created: 2025/11/12 23:44:53 by vnaoussi          #+#    #+#             */
+/*   Updated: 2025/11/13 09:18:13 by vnaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
 	size_t	i;
+	size_t	j;
+	size_t	src_len;
 
 	i = 0;
-	while (s[i])
+	src_len = ft_strlen(src);
+	while (dest[i] && i < size)
 		i++;
-	return (i);
-}
-
-char	*ft_strdup(const char *s)
-{
-	size_t	i;
-	char	*copy;
-
-	i = 0;
-	copy = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (copy != NULL)
+	if (i == size)
+		return (i + src_len);
+	j = 0;
+	while (src[j] && j < size - i - 1)
 	{
-		while (s[i++])
-			copy[i - 1] = ((char *)s)[i - 1];
-		copy[i - 1] = '\0';
+		dest[i + j] = src[j];
+		j++;
 	}
-	return (copy);
+	dest[i + j] = '\0';
+	return (i + src_len);
 }

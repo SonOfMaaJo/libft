@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnaoussi <vnaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/11 15:56:36 by vnaoussi          #+#    #+#             */
-/*   Updated: 2025/11/11 16:29:01 by vnaoussi         ###   ########.fr       */
+/*   Created: 2025/11/11 00:07:03 by vnaoussi          #+#    #+#             */
+/*   Updated: 2025/11/11 01:09:44 by vnaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+void	*ft_memset(void *s, int c, size_t n)
 {
 	size_t	i;
 
 	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strdup(const char *s)
-{
-	size_t	i;
-	char	*copy;
-
-	i = 0;
-	copy = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (copy != NULL)
+	while (i < n)
 	{
-		while (s[i++])
-			copy[i - 1] = ((char *)s)[i - 1];
-		copy[i - 1] = '\0';
+		((char *)s)[i++] = c;
 	}
-	return (copy);
+	return (s);
 }

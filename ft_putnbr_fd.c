@@ -1,38 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnaoussi <vnaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/11 15:56:36 by vnaoussi          #+#    #+#             */
-/*   Updated: 2025/11/11 16:29:01 by vnaoussi         ###   ########.fr       */
+/*   Created: 2025/11/13 20:09:08 by vnaoussi          #+#    #+#             */
+/*   Updated: 2025/11/14 11:38:43 by vnaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+static void ft_putpnb_fd(int n, int fd)
 {
-	size_t	i;
+	char	c;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strdup(const char *s)
-{
-	size_t	i;
-	char	*copy;
-
-	i = 0;
-	copy = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (copy != NULL)
+	c = '0';
+	if (n < 10)
 	{
-		while (s[i++])
-			copy[i - 1] = ((char *)s)[i - 1];
-		copy[i - 1] = '\0';
+		c = c + n;
+		write(fd, &c, 1);
 	}
-	return (copy);
+	else
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
 }
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	int	t_min;
+
+	if (n < 0)
+	{
+		if (n == INT_MIN)
+		{
+			n = n / 10;
+			t_min = 1;
+		}
+		n = -1 * n;
+		write(fd, "-", 1);
+	}
+	ft_putpnb_fd(n, fd);
+	if (t_min)
+		write(fd, "8", 1);
+}
+
+
