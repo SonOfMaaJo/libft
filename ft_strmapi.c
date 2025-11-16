@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnaoussi <vnaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/11 15:56:36 by vnaoussi          #+#    #+#             */
-/*   Updated: 2025/11/15 23:35:51 by vnaoussi         ###   ########.fr       */
+/*   Created: 2025/11/15 21:48:16 by vnaoussi          #+#    #+#             */
+/*   Updated: 2025/11/15 22:00:35 by vnaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	i;
-	char	*copy;
+	unsigned int	i;
+	char	*results;
 
 	i = 0;
-	copy = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (copy != NULL)
+	results = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (results != NULL)
 	{
 		while (s[i++])
-			copy[i - 1] = ((char *)s)[i - 1];
-		copy[i - 1] = '\0';
+			results[i - 1] = f(i - 1, s[i - 1]);
+		results[i - 1] = '\0';
 	}
-	return (copy);
+	return (results);
 }
