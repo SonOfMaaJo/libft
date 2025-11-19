@@ -6,7 +6,7 @@
 /*   By: vnaoussi <vnaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 23:39:34 by vnaoussi          #+#    #+#             */
-/*   Updated: 2025/11/16 01:01:00 by vnaoussi         ###   ########.fr       */
+/*   Updated: 2025/11/19 15:20:49 by vnaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -22,24 +22,15 @@ static int	getlenword(char const *s, char c)
 	{
 		while (s[i] == c)
 			i++;
-		if (s[i++] != '\0')
+		if (s[i])
 			n++;
-		while (s[i] != c && s[i])
+		while (s[i] && s[i] != c)
 			i++;
 	}
 	return (n);
 }
-static char	*getnextword(char const *s, char c)
-{
-	int		i;
 
-	i = 0;
-	while (s[i] == c)
-		i++;
-	return ((char *)s + i);
-}
-
-static int getlentword(char const *s, char c)
+static int	getlentword(char const *s, char c)
 {
 	int		i;
 
@@ -60,34 +51,40 @@ static char	**ft_free(char **splitw)
 	return (NULL);
 }
 
-char	**ft_split(char const *s, char c)
+static char	**perform_split(char **array, const char *s, char c, int word_count)
 {
-	int		len;
-	int		lenw;
 	int		i;
+	int		word_len;
 	char	*pos;
-	char	**splitw;
 
 	i = 0;
-	len = getlenword(s, c);
-	lenw = 0;
-	pos = getnextword(s, c);
-	splitw = (char **)malloc(sizeof(char *) * (len + 1));
-	if (splitw != NULL)
+	pos = (char *)s;
+	while (i < word_count)
 	{
-		while (i < len)
-		{
-			lenw = getlentword(pos, c);
-			splitw[i] = (char *)malloc(sizeof(char) * (lenw + 1));
-			if (splitw[i] != NULL)
-				ft_strlcpy(splitw[i], pos, lenw + 1);
-			else
-				return (ft_free(splitw));
-			pos = getnextword(pos + lenw + 1, c);
-			i++;
-		}
-		splitw[i] = NULL;
+		while (*pos == c)
+			pos++;
+		word_len = getlentword(pos, c);
+		array[i] = (char *)malloc(sizeof(char) * (word_len + 1));
+		if (!array[i])
+			return (ft_free(array));
+		ft_strlcpy(array[i], pos, word_len + 1);
+		pos += word_len;
+		i++;
 	}
-	return (splitw);
+	array[i] = NULL;
+	return (array);
+}
 
+char	**ft_split(char const *s, char c)
+{
+	char	**result_array;
+	int		word_count;
+
+	if (!s)
+		return (NULL);
+	word_count = getlenword(s, c);
+	result_array = (char **)malloc(sizeof(char *) * (word_count + 1));
+	if (!result_array)
+		return (NULL);
+	return (perform_split(result_array, s, c, word_count));
 }

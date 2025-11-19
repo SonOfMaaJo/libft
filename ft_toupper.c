@@ -6,7 +6,7 @@
 /*   By: vnaoussi <vnaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 03:02:21 by vnaoussi          #+#    #+#             */
-/*   Updated: 2025/11/11 03:05:32 by vnaoussi         ###   ########.fr       */
+/*   Updated: 2025/11/18 15:28:58 by vnaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -17,4 +17,3 @@ int	ft_toupper(int c)
 		return (c - 32);
 	return (c);
 }
-

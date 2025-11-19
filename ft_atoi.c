@@ -6,13 +6,15 @@
 /*   By: vnaoussi <vnaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 16:39:22 by vnaoussi          #+#    #+#             */
-/*   Updated: 2025/11/11 17:32:19 by vnaoussi         ###   ########.fr       */
+/*   Updated: 2025/11/19 15:27:16 by vnaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 int	ft_atoi(const char *nptr)
 {
+	if (!nptr)
+		return (0);
 	int	nbr;
 	int	i;
 	int sign;

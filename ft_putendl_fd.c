@@ -6,12 +6,12 @@
 /*   By: vnaoussi <vnaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 20:06:19 by vnaoussi          #+#    #+#             */
-/*   Updated: 2025/11/13 20:08:25 by vnaoussi         ###   ########.fr       */
+/*   Updated: 2025/11/18 15:28:14 by vnaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void ft_putendl_fd(char *s, int fd)
+void	ft_putendl_fd(char *s, int fd)
 {
 	ft_putstr_fd(s, fd);
 	write(fd, "\n", 1);
