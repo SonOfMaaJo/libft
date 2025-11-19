@@ -6,7 +6,7 @@
 /*   By: vnaoussi <vnaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 16:05:17 by vnaoussi          #+#    #+#             */
-/*   Updated: 2025/11/18 16:42:19 by vnaoussi         ###   ########.fr       */
+/*   Updated: 2025/11/19 18:59:47 by vnaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
@@ -17,7 +17,7 @@
 # include <limits.h>
 # include <stdint.h>
 
-typedef struct	s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;

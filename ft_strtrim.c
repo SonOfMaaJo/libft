@@ -6,7 +6,7 @@
 /*   By: vnaoussi <vnaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 14:14:25 by vnaoussi          #+#    #+#             */
-/*   Updated: 2025/11/17 01:01:47 by vnaoussi         ###   ########.fr       */
+/*   Updated: 2025/11/19 17:26:49 by vnaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -37,6 +37,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	i;
 	size_t	len;
 
+	if (s1 == NULL || set == NULL)
+		return (NULL);
 	i = 0;
 	len = ft_strlen(s1);
 	trim_len = ft_gettriml(s1, set);

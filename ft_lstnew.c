@@ -6,7 +6,7 @@
 /*   By: vnaoussi <vnaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 01:12:33 by vnaoussi          #+#    #+#             */
-/*   Updated: 2025/11/16 01:22:30 by vnaoussi         ###   ########.fr       */
+/*   Updated: 2025/11/19 18:56:56 by vnaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -14,6 +14,7 @@
 t_list	*ft_lstnew(void *content)
 {
 	t_list	*newnode;
+
 	newnode = (t_list *)malloc(sizeof(t_list) * 1);
 	if (newnode != NULL)
 	{
@@ -22,4 +23,3 @@ t_list	*ft_lstnew(void *content)
 	}
 	return (newnode);
 }
-

@@ -6,7 +6,7 @@
 /*   By: vnaoussi <vnaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 22:02:07 by vnaoussi          #+#    #+#             */
-/*   Updated: 2025/11/15 23:32:29 by vnaoussi         ###   ########.fr       */
+/*   Updated: 2025/11/19 18:32:21 by vnaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -20,9 +20,29 @@ static int	ft_lenp(int n)
 		return (1);
 	if (n < 0)
 		i++;
-	while ((n = n / 10) != 0)
+	while (n / 10 != 0)
+	{
 		i++;
+		n = n / 10;
+	}
 	return (i);
+}
+
+static int	ft_isneg(int *n, char **nchar, int *len)
+{
+	if (*n < 0)
+	{
+		if (*n == INT_MIN)
+		{
+			(*nchar)[*len - 1] = '8';
+			*len -= 1;
+			*n /= 10;
+		}
+		(*nchar)[0] = '-';
+		*n *= -1;
+		return (1);
+	}
+	return (0);
 }
 
 char	*ft_itoa(int n)
@@ -38,16 +58,7 @@ char	*ft_itoa(int n)
 	{
 		i = 0;
 		nchar[len] = '\0';
-		if (n == INT_MIN)
-		{
-			nchar[len-- - 1] = '8';
-			n /= 10;
-		}
-		if (n < 0)
-		{
-			nchar[0] = '-';
-			n *= -1;
-		}
+		ft_isneg(&n, &nchar, &len);
 		if (n == 0)
 			nchar[0] = '0';
 		while (n != 0)
