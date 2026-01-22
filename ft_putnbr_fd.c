@@ -6,12 +6,12 @@
 /*   By: vnaoussi <vnaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 20:09:08 by vnaoussi          #+#    #+#             */
-/*   Updated: 2025/11/14 14:40:53 by vnaoussi         ###   ########.fr       */
+/*   Updated: 2025/11/19 18:53:57 by vnaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-static void ft_putpnb_fd(int n, int fd)
+static void	ft_putpnb_fd(int n, int fd)
 {
 	if (n < 10 && n >= 0)
 		ft_putchar_fd(n + '0', fd);

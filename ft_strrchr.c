@@ -6,7 +6,7 @@
 /*   By: vnaoussi <vnaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 13:08:18 by vnaoussi          #+#    #+#             */
-/*   Updated: 2025/11/14 18:48:12 by vnaoussi         ###   ########.fr       */
+/*   Updated: 2025/11/19 19:39:25 by vnaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -14,7 +14,7 @@
 char	*ft_strrchr(const char *s, int c)
 {
 	size_t	i;
-	size_t last_pos;
+	size_t	last_pos;
 
 	i = 0;
 	last_pos = 0;
