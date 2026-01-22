@@ -6,7 +6,7 @@
 /*   By: vnaoussi <vnaoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 16:05:17 by vnaoussi          #+#    #+#             */
-/*   Updated: 2025/11/19 18:59:47 by vnaoussi         ###   ########.fr       */
+/*   Updated: 2026/01/18 01:00:00 by vnaoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <stdint.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -40,6 +41,7 @@ int		ft_tolower(int c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strcmp(const char *s1, const char *s2);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
@@ -66,5 +68,31 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+typedef struct s_gnl_list
+{
+	int					fd;
+	char				rest[BUFFER_SIZE + 1];
+	struct s_gnl_list	*next;
+}	t_gnl_list;
+
+char	*get_next_line(int fd);
+size_t	get_len_line(char *content_buffer);
+int		read_and_save(int fd, char **content_b, size_t *size_content);
+size_t	ft_strncat_l(char *dest, char *buffer, size_t len, char c);
+char	*init_fread(char *buffer, char *content_b, size_t size, char c);
+int		ft_gnl_free(char *buffer);
+
+int		ft_printf(const char *format, ...);
+void	ft_printarg(char format, va_list args, int *len);
+int		ft_putchar(char c);
+int		ft_putstr(char *str);
+int		ft_putnbrbase(long c, char *base);
+void	ft_perfdivp(unsigned int c, size_t base_len, char *base, int *len);
+void	ft_printp(void *p, int *len);
 
 #endif
